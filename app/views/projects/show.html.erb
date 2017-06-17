@@ -1,0 +1,29 @@
+<%= form_tag "/projects", method: :patch do %>
+<div>
+Title: <input type="text" name= "name" value="<%= @project.title %>">
+ </div>
+<div>
+Face: <input type="text" name= "face"  value="<%= @project.face %>">
+ </div>
+<div>
+<div>
+Face Color: <input type="text" name= "face_color" value="<%= @project.face_color %>">
+ </div>>
+</div>
+<div>
+Eyes: <input type="text" name= "eyes" value="<%= @project.eyes %>">
+ </div>>
+</div>
+<div>
+Nose: <input type="text" name= "nose" value="<%= @project.nose %>">
+ </div>>
+</div>
+<div>
+Mouth: <input type="text" name= "mouth" value="<%= @project.mouth %>">
+ </div>>
+ </div>
+<div>
+
+<input type="submit" value="create">
+ </div>
+  

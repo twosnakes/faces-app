@@ -1,0 +1,21 @@
+
+
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+                            <button onclick="window.location.href='/signup'">Sign Up</button>
+                            <button onclick="window.location.href='/login'">Log In</button>
+
+        <h1>SAVE FACE</h1>
+            <% @projects.each do |project| %>
+            <h1><a href="/projects/<%= project.id %>"> <%= project.title %></a></h1>
+            <h4><%= project.title %></h4>
+            <h4><%= project.face %></h4>
+            <h4><%= project.face_color %></h4>
+            <h4><%= project.eyes %></h4>
+            <h4><%= project.nose %></h4>
+            <h4><%= project.mouth %></h4>
+            <% end %>
+
+    </div>
+    </div>
+

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Projects.all
+    @projects = Project.all
   end
 
   def new
@@ -10,14 +10,8 @@ class ProjectsController < ApplicationController
   def create
     project = Project.new(
                           user_id: params[:user_id],
-                          completed: params[:completed],
-                          current: params[:current],
-                          title: params[:title],
-                          face: params[:face],
-                          face_color: params[:face_color],
-                          eyes: params[:eyes],
-                          nose: params[:nose],
-                          mouth: params[:mouth]
+                          completed: false, 
+                          current: true
                           ) 
     project.save
 
@@ -36,9 +30,6 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     project.assign_attributes(    
-                              user_id: params[:user_id],
-                              completed: params[:completed],
-                              current: params[:current],
                               title: params[:title],
                               face: params[:face],
                               face_color: params[:face_color],

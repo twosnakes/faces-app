@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   
   # users routes 
-  
-
-  get '/users' => 'users#new'
+  get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  get '/users/:id' => 'users#show'
+  get '/users/:id' => 'users#show' #blank project nothing started yet
 
   get '/users/:id/edit' => 'users#edit'
   patch '/users/:id' => 'users#update'
@@ -15,9 +13,9 @@ Rails.application.routes.draw do
 
 
   # projects routes
-  get '/projects' => 'projects#index'
+  get '/projects' => 'projects#index' #projects of multiple users
 
-  get '/users/:user_id/projects' => 'projects#user_index'
+  get '/users/:user_id/projects' => 'projects#user_index' #projects of specific user
 
   get '/users/:user_id/projects/new' => 'projects#new'
   post '/users/:user_id/projects' => 'projects#create'
@@ -28,6 +26,11 @@ Rails.application.routes.draw do
   patch '/users/:user_id/projects/:id' => 'projects#update'
 
   delete '/users/:user_id/projects/:id' => 'projects#destroy'
+
+  #session routes
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
 
 
