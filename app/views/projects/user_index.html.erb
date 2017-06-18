@@ -1,8 +1,18 @@
 
-        <button onclick="window.location.href='/users/<%= current_user.id %>/projects'">Home</button>
-                                    <button onclick="window.location.href='/users/:id">Back To The Drawing Board</button>
+        
 
+        <h1><%= current_user.first_name +  current_user.last_name %></h1>
+
+        <%= link_to "Home", "/projects" %>
+        <%= link_to "Back to the drawing Board", "/users/#{@user.id}" %>
 
 
 <h1>Completed Projects</h1>
+
+ <%= @projects %>
+
 <h1>Works In Progress</h1>
+
+
+
+ <button onclick="window.location.href='/users/<%= current_user.id %>/projects'">Saved Projects</button>

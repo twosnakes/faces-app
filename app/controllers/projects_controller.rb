@@ -1,7 +1,14 @@
 class ProjectsController < ApplicationController
 
-  def user_index
+  def index
     @projects = Project.all
+    
+  end
+
+  def user_index
+    @projects_completed = Project.where( completed: true, user_id: params[:user_id] )
+    @projects_current = Project.where( current: true, user_id: params[:user_id] )
+    @user = User.find(params[:user_id])
   end
 
   def new

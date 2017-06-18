@@ -23,8 +23,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    
-    
+    @user = User.find(params[:id])
+
+    # redirect to projects/user_index if current project is false
+    # redirect to projects/show if current project is true
   end
 end
 
