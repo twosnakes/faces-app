@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get '/users/:user_id/projects/new' => 'projects#new'
   post '/users/:user_id/projects' => 'projects#create'
 
-  get '/users/:user_id/projects/:id' => 'projects#show'
+   get '/users/:user_id/projects/:id' => 'projects#show'
+   # this is where a user goes after they have logged in gone to blank page and decided to create a new project
 
   get '/users/:user_id/projects/:id/edit' => 'projects#edit'
   patch '/users/:user_id/projects/:id' => 'projects#update'

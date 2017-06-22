@@ -2,13 +2,14 @@
 
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-                            <button onclick="window.location.href='/signup'">Sign Up</button>
-                            <button onclick="window.location.href='/login'">Log In</button>
-            
-            <% if current_user %> 
-                <button onclick="window.location.href='/logout'">Log Out</button>
-                <% end %>
+                            
+                            <%= link_to "Log In", "/login" %>
+                            <%= link_to "Sign Up", "/signup" %>
 
+
+
+            
+           
         <h1>SAVE FACE</h1>
             <% @projects.each do |project| %>
             <h1><a href="/projects/<%= project.id %>"><%= project.title %></a></h1>
