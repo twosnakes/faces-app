@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
+    project = Project.find(params[:id])
     project.assign_attributes(    
                               title: params[:title],
                               face: params[:face],
