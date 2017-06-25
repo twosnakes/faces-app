@@ -1,3 +1,15 @@
+ <h1>SVG CANVAS</h1> 
+ <h1>Hi <%= current_user.first_name%> <%= current_user.last_name %>!</h1>
+
+                            
+                      <div>
+                        <li>Make Face Library</li>
+                        <li>Face Color Library</li>
+                        <li>Eye Library</li>
+                        <li>Nose Library</li>
+                        <li>Mouth Library</li>
+                      </div>   
+ 
 <%= form_tag "/projects", method: :patch do %>
 <div>
 Title: <input type="text" name= "name" value="<%= @project.title %>">
@@ -30,23 +42,13 @@ Mouth: <input type="text" name= "mouth" value="<%= @project.mouth %>">
 
 
 
- <h1>SVG CANVAS</h1> move to project show
 
-        <button href='/users/<%= current_user.id %>/projects'">Saved Projects</button>
-            <%= link_to "Saved Projects", "/users/#{ current_user.id }/projects", method: :post %> 
+        
+            <%= link_to "Saved Projects", "/users/#{ current_user.id }/projects", method: :get %> 
 
-                <h1>Hi <%= current_user.first_name%> <%= current_user.last_name %>!</h1>
                
 
                            
-                            
-                      <div>
-                        <li>Make Face Library</li>
-                        <li>Face Color Library</li>
-                        <li>Eye Library</li>
-                        <li>Nose Library</li>
-                        <li>Mouth Library</li>
-                      </div>   
 
                       <!-- if project.completed != true   --> 
 
@@ -54,12 +56,8 @@ Mouth: <input type="text" name= "mouth" value="<%= @project.mouth %>">
 
                                  <%= link_to "New Project", "/users/#{@user.id}/projects", method: :post %> 
                                  <%= link_to "Delete Project", "/users/#{@user.id}/projects/#{@project.id}", method: :delete %> 
-                                 <%= link_to "Save Project", "/users/#{@user.id}/projects", method: :post %> 
                                  <%= link_to "Finalize/Share Project", "/users/#{@user.id}/projects", method: :post %> 
                             
 
 
 
-
-                            <button onclick="window.location.href='???'">Finalize/Share</button>
-                            <button onclick="window.location.href='/users/#{params[:user_id]}/projects'">Save In Project</button>

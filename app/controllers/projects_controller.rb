@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   
   def create
     project = Project.new(
-                          user_id: params[:user_id],
+                          user_id: current_user.id,
                           completed: false, 
                           current: true
                           ) 
@@ -51,10 +51,11 @@ class ProjectsController < ApplicationController
     redirect_to "/users/#{project.user_id}/projects/#{project.id}"  
   end
 
-  def delete
+  def destroy
     project = Project.find(params[:id])
-    project.destroy
+    user_id = params[:user_id]
+    project.delete
     
-    redirect_to '/users/#{params[:user_id]}/projects' 
+    redirect_to "/users/#{user_id}"
   end
 end
