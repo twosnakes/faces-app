@@ -1,44 +1,10 @@
  <h1>SVG CANVAS</h1> 
  <h1>Hi <%= current_user.first_name%> <%= current_user.last_name %>!</h1>
 
-                            
-                      <div>
-                        <li>Make Face Library</li>
-                        <li>Face Color Library</li>
-                        <li>Eye Library</li>
-                        <li>Nose Library</li>
-                        <li>Mouth Library</li>
-                      </div>   
+                      
  
 <%= form_tag "/users/#{current_user.id}/projects/#{@project.id}", method: :patch do %>
-<div>
-Title: <input type="text" name= "name" value="<%= @project.title %>">
- </div>
-<div>
-Face: <input type="text" name= "face"  value="<%= @project.face %>">
- </div>
-<div>
-<div>
-Face Color: <input type="text" name= "face_color" value="<%= @project.face_color %>">
- </div>
-</div>
-<div>
-Eyes: <input type="text" name= "eyes" value="<%= @project.eyes %>">
- </div>
-</div>
-<div>
-Nose: <input type="text" name= "nose" value="<%= @project.nose %>">
- </div>
-</div>
-<div>
-Mouth: <input type="text" name= "mouth" value="<%= @project.mouth %>">
- </div>
- </div>
-<div>
 
-<input type="submit" value="create">
- </div>
- <% end %>
 
 
 
@@ -58,41 +24,27 @@ Mouth: <input type="text" name= "mouth" value="<%= @project.mouth %>">
                                  <%= link_to "Delete Project", "/users/#{@user.id}/projects/#{@project.id}", method: :delete %> 
                                  <%= link_to "Finalize/Share Project", "/users/#{@user.id}/projects", method: :post %> 
 
-
-
-
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Face</title>
-  <style>
-    #face #smirk, #smile, #frown, .eye {
-      display: none;
-    }
-  </style>
-</head>
-<body>
+<div id="app">
   <svg id="place" height="500" width="500">
   <g id="face-group">
     <g class="face" id="circle">
        <circle cx="250" cy="250" r="200" stroke="black" stroke-width="3" fill="#CA0" />
-      </g>
-         <g class="face" id="rectangle">
-         </g>
+    </g>
+     <g class="face" id="rectangle">
+     </g>
 
-         <g class="face" id="triangle">
-         </g>
+     <g class="face" id="triangle">
+     </g>
     <g id="mouth-group">
-      <g class="mouth" id="smirk">
+      <g v-if="currentMouth === 'smirk'">
         <ellipse cx="200" cy="340" rx="80" ry="35" fill="black" />
         <ellipse cx="205" cy="335" rx="83" ry="35" fill="#CA0"/>
       </g>
-      <g class="mouth" id="frown">
+      <g v-if="currentMouth === 'frown'">
         <ellipse cx="250" cy="340" rx="123" ry="55" fill="#CA0" stroke="black" stroke-width="10" />
         <ellipse cx="250" cy="350" rx="123" ry="55" fill="#CA0"/>
       </g>
-      <g class="mouth" id="smile">
+      <g v-if="currentMouth === 'smile'">
         <ellipse cx="250" cy="310" rx="132" ry="80" fill="white" stroke="black" stroke-width="10" />
         <ellipse cx="250" cy="270" rx="130" ry="80" fill="#CA0" stroke="black" stroke-width="10" />
         <ellipse cx="250" cy="260" rx="140" ry="80" fill="#CA0"/>
@@ -115,15 +67,15 @@ Mouth: <input type="text" name= "mouth" value="<%= @project.mouth %>">
   </svg>
   <h2>Faces</h2>
   <ul id="face-buttons">
-    <li> onclick="changeFace(this)" value="circle">circle</li>
-    <li> onclick="changeFace(this)" value="rectangle">rectangle</li>
-    <li> onclick="changeFace(this)" value="triangle">triangle</li>
+    <li onclick="changeFace(this)" value="circle">circle</li>
+    <li onclick="changeFace(this)" value="rectangle">rectangle</li>
+    <li onclick="changeFace(this)" value="triangle">triangle</li>
   </ul>
   <h2>Mouths</h2>
   <ul id="mouth-buttons">
-    <li onclick="changeMouth(this)" value="smirk">smirk</li>
-    <li onclick="changeMouth(this)" value="smile">smile</li>
-    <li onclick="changeMouth(this)" value="frown">frown</li>
+    <li v-on:click="changeMouth('smirk')" value="smirk">smirk</li>
+    <li v-on:click="changeMouth('smile')" value="smile">smile</li>
+    <li v-on:click="changeMouth('frown')" value="frown">frown</li>
   </ul>
   <h2>Eyes</h2>
   <ul id="eye-buttons">
@@ -131,48 +83,11 @@ Mouth: <input type="text" name= "mouth" value="<%= @project.mouth %>">
     <li onclick="changeEye(this)" value="pupil-up">up</li>
   </ul>
 
-  <script>
-  function changeFace(buttonObj) {
-    var faces = document.querySelectorAll(".face");
-    for (var i = 0; i < faces.length; i++) {
-      var face = faces[i];
-      face.style.display = "none"
-    }
-  }
 
-    function changeMouth(buttonObj) {
-      var mouths = document.querySelectorAll(".mouth");
-      for (var i = 0; i < mouths.length; i++) {
-        var mouth = mouths[i];
-        mouth.style.display = "none";
-      }
-      var mouthSVG = document.getElementById(buttonObj.innerHTML);
 
-      mouthSVG.style.display = "block";
-    }
-
-    function changeEye(buttonObj) {
-      var eyes = document.querySelectorAll(".eye");
-      for (var i = 0; i < eyes.length; i++) {
-        var eye = eyes[i];
-        eye.style.display = "block";
-      }
-
-      var pupils = document.querySelectorAll(".pupil");
-      for (var i = 0; i < pupils.length; i++) {
-        var pupil = pupils[i];
-        pupil.style.display = "none";
-      }
-
-      var pupilSVGs = document.getElementsByClassName("pupil-" + buttonObj.innerHTML);
-      for (var i = 0; i < pupilSVGs.length; i++) {
-        var pupilSVG = pupilSVGs[i];
-        pupilSVG.style.display = "block";
-      }
-    }
-  </script>
-</body>
-</html>
+  {{ message }}
+</div>
+<% end %>
 
 
 
