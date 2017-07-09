@@ -6,7 +6,7 @@
 <html class="ie8" lang="en">    <![endif]-->
 <head>
 
-   <title>Folius | The Portfolio Html5 Template</title>
+   <title>SAVE FACE</title>
 
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,6 +38,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 </head>
+<div class="container">
 <body class="">
 
 <!--Pre-Loader-->
@@ -50,17 +51,19 @@
    <!-- Sidebar -->
    <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
-         <li class="e-divider-4"></li>
-         <li class="sidebar-brand">
+      <!--    <li class="e-divider-4"></li>
+ -->         <li class="sidebar-brand">
+         <h4>SAVE FACE</h4>
             <a href="/#"><img src="/images/greenface.png" width="180" alt="logo"></a>
          </li>
          <li class="e-divider-4"></li>
          <li><a href="/login" class="current">LOGIN</a></li>
-         <li><a href="/portfolio.html">START NEW PROJECT</a></li>
-         <li><a href="/blog-list.html">SIGNUP</a></li>
+         <li><a href="/signup">SIGNUP</a></li>
+<!--          <li><a href="/portfolio.html">START NEW PROJECT</a></li>
+ -->        
        
       </ul>
-      <div class="e-divider-4"></div>
+ <!--      <div class="e-divider-4"></div> -->
   <!--     <div class="side-widget">
          <h6 class="font-accident-one-bold e-uppercase">Visual Impact</h6>
          <p class="small">
@@ -96,7 +99,7 @@
 
       <!-- Header -->
       <header class="cbp-af-header toggled">
-         <div class="cbp-af-inner">
+         <div class="cbp-af-inner"
             <div class="navbar navbar-default" role="navigation">
                <div class="container-fluid padding-side-50">
                   <!-- Brand and toggle get grouped for better mobile display -->
@@ -114,13 +117,13 @@
                      <ul class="nav navbar-nav navbar-right">
                         <li><a href="/blog-list.html">Blog</a></li>
                         <li class="dropdown">
-                           <a class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+                           <a class="dropdown-toggle" data-toggle="dropdown">ABOUT <b class="caret"></b></a>
                            <ul class="dropdown-menu">
                               <li><a href="/portfolio-item.html">Portfolio Item</a></li>
-                              <li><a href="/blogpost.html">Blog Post</a></li>
+                              <li><a href="/blogpost.html">ABOUT</a></li>
                            </ul>
                         </li>
-                        <li><a href="/https://wrapbootstrap.com/theme/folius-portfolio-template-WB0674NL1?ref=neuethemes">Buy The Template</a></li>
+                        <li><a href="/https://wrapbootstrap.com/theme/folius-portfolio-template-WB0674NL1?ref=neuethemes">CONTACT</a></li>
                      </ul>
                   </nav><!-- /.navbar-collapse -->
                </div>
@@ -140,7 +143,7 @@
                      <!-- SLIDE  -->
                    <!--   <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
                          data-thumb="/assets/custom/images/rs-images/fullslide1-320x200.jpg" data-saveperformance="off"
-                         data-title="Slide"> --> -->
+                         data-title="Slide"> -->
                         <!-- MAIN IMAGE -->
                  <!--        <img src="/images/rs-images/02.jpg" alt="fullslide2"
                              data-bgposition="center center"
@@ -150,7 +153,7 @@
 
 
                         <!-- LAYER NR. 1 -->
-
+<!-- 
                         <div class="tp-caption cap-title font-accident-two-normal color00 e-uppercase tp-resizeme rs-parallaxlevel-2"
                              data-x="center"
                              data-y="bottom"
@@ -170,7 +173,7 @@
                              data-fontsize="['36','34','30','20']"
                              data-lineheight="['120','100','90','80']"
                              style="z-index: 2;">Welcome to Folius Portfolio
-                        </div>
+                        </div> -->
 
                         <!-- LAYER NR. 3 -->
               <!--           <div class="tp-caption cap-sub-subtitle font-regular-normal color00 e-uppercase tp-resizeme rs-parallaxlevel-2"
@@ -269,7 +272,7 @@
 
 
          <!--  Portfolio Block  -->
-         <section id="portfolio" class="e-block e-block-skin pt-section" data-stellar-background-ratio="0.5" data-name="Portfolio">
+       <!--   <section id="portfolio" class="e-block e-block-skin pt-section" data-stellar-background-ratio="0.5" data-name="Portfolio">
 
             <div class="light">
 
@@ -281,7 +284,12 @@
                      <li><a href="/#cat4" data-filter=".misc">misc</a></li>
                   </ul>
                </div>
+ -->
 
+<div id="main-content">
+
+<%= yield %>
+      </div>
 
 
 <div id="image-cache" class="hidden"></div>
@@ -317,12 +325,15 @@
 <script src="/js/script.js" type="text/javascript"></script>
 
 </body>
+
+
+</div>
 </html>
 
 
 
 
-               <div class="dividewhite4"></div>
+<!--                <div class="dividewhite4"></div>
 
                <div class="grid container-fluid ">
 
@@ -487,7 +498,7 @@
                      <div class="grid-item media-objects posters col-lg-3 col-md-4 col-sm-6 nopadding">
                         <div class="item-wrap">
                            <figure class="effect-goliath">
-                              <img src="/images/portfolio/thumbs/12-01.jpg" class="img-responsive" alt="img03"/>
+                              <img src="/images/portfolio/thumbs/12-01.jpg" class="img-responsive" alt="img12"/>
                               <figcaption>
                                  <div class="fig-description">
                                     <h3>Twelve</h3>
@@ -507,13 +518,11 @@
          </section>
          <!-- /Portfolio Block  -->
 
-      </div>
+      <!-- </div> -->
       <!-- /Content Sections -->
 
-   </div>
+   <!-- </div> -->
    <!-- /Content -->
 
-</div>
-
-----------------------------------------------
+<!-- </div> -->
 

@@ -27,13 +27,14 @@
 <div id="app">
   <svg id="place" height="500" width="500">
   <g id="face-group">
-    <g class="face" id="circle">
+    <g v-if="currentFace === 'circle'">
        <circle cx="250" cy="250" r="200" stroke="black" stroke-width="3" fill="#CA0" />
     </g>
-     <g class="face" id="rectangle">
+     <g v-if="currentFace === 'rectangle'">
+       <rect x="67.76" y="114.123" width="231.098" height="234.665" style="paint-order: stroke markers; stroke-linecap: square; stroke-linejoin: bevel; stroke-width: 25; fill: rgb(34, 195, 147); stroke: rgb(186, 218, 85);" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"/>
      </g>
 
-     <g class="face" id="triangle">
+     <g v-if="currentFace === 'triangle'">
      </g>
     <g id="mouth-group">
       <g v-if="currentMouth === 'smirk'">
@@ -50,15 +51,16 @@
         <ellipse cx="250" cy="260" rx="140" ry="80" fill="#CA0"/>
       </g>
     </g>
-    <g class="eye" id="left-eye-group">
-      <ellipse cx="200" cy="180" rx="45" ry="65" style="fill:white;stroke:black;stroke-width:2" />
+    <g id="left-eye-group">
+    <g v-if="currentEye === 'left-eye'">
+      <ellipse cx="200" cy="180" rx="45" ry="65" style="fill:white;stroke:black;stroke-width:2"/>
       <g id="left-pupil-group">
         <circle class="pupil-down pupil" cx="200" cy="220" r="23" stroke="black" stroke-width="3" fill="black" />
         <circle class="pupil-up pupil" cx="200" cy="140" r="23" stroke="black" stroke-width="3" fill="black" />
       </g>
     </g>
     <g class="eye" id="right-eye-group">
-      <ellipse cx="300" cy="180" rx="45" ry="65" style="fill:white;stroke:black;stroke-width:2" />
+      <ellipse cx="300" cy="180" rx="45" ry="65" style="fill:white;stroke:black;stroke-width:2"/>
       <g id="right-pupil-group">
         <circle class="pupil-down pupil" cx="300" cy="220" r="23" stroke="black" stroke-width="3" fill="black" />
         <circle class="pupil-up pupil" cx="300" cy="140" r="23" stroke="black" stroke-width="3" fill="black" />
@@ -67,9 +69,9 @@
   </svg>
   <h2>Faces</h2>
   <ul id="face-buttons">
-    <li onclick="changeFace(this)" value="circle">circle</li>
-    <li onclick="changeFace(this)" value="rectangle">rectangle</li>
-    <li onclick="changeFace(this)" value="triangle">triangle</li>
+    <li v-on:click="changeFace('circle')" value="circle">circle</li>
+    <li v-on:click="changeFace('rectangle')" value="rectangle">rectangle</li>
+    <li v-on:click="changeFace('triangle')" value="triangle">triangle</li>
   </ul>
   <h2>Mouths</h2>
   <ul id="mouth-buttons">
@@ -79,13 +81,13 @@
   </ul>
   <h2>Eyes</h2>
   <ul id="eye-buttons">
-    <li onclick="changeEye(this)" value="pupil-down">down</li>
-    <li onclick="changeEye(this)" value="pupil-up">up</li>
+    <li v-on:click="changeEye('down')" value="pupil-down">down</li>
+    <li v-on:click="changeEye('up')" value="pupil-up">up</li>
   </ul>
 
 
 
-  {{ message }}
+ 
 </div>
 <% end %>
 
