@@ -5,26 +5,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
       message: 'Hello Vue!',
       currentMouth: '',
       currentFace: '',
-      currentEye: '',
+      currentLeftEye: '',
+      currentRightEye: ''
 
     },
     methods: {
       changeMouth: function(mouth) {
         this.currentMouth = mouth;
       },
-    methods: {
+
       changeFace: function(face) {
         this.currentFace = face;
       },
 
-    methods: {
-      changeEye: function(eye) {
-        this.currentEye = eye;
+      changeLeftEye: function(leftEye) {
+        this.currentLeftEye = leftEye;
       },
-     
-      }  
-      
+
+      changeRightEye: function(rightEye) {
+        this.currentRightEye = rightEye;
       }
+     
+      
+      
     }
+    
   });
 });
