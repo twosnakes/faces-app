@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       message: 'Hello Vue!',
       currentMouth: '',
       currentFace: '',
-      currentLeftEye: '',
-      currentRightEye: ''
+      currentEye: ''
 
     },
     methods: {
@@ -18,16 +17,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         this.currentFace = face;
       },
 
-      changeLeftEye: function(leftEye) {
-        this.currentLeftEye = leftEye;
+      changeEye: function(eye) {
+        this.currentEye = eye;
       },
-
-      changeRightEye: function(rightEye) {
-        this.currentRightEye = rightEye;
-      }
      
-      
-      
     }
     
   });
