@@ -1,0 +1,1 @@
+json.partial! @project, partial: 'project',  as: :project

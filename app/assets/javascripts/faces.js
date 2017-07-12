@@ -30,7 +30,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
                       }
 
-                      
+          $.ajax({
+            url: '/api/v1/applications/' + applicationId.innerHTML, 
+            type: 'PATCH', 
+            dataType: 'json', 
+            data: params, 
+            success: function(data) {
+                                    console.log(data);
+                                    },
+            error: function(e) {
+                                console.log("hey girl");
+                                }
+          });            
       }
     }
     

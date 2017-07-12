@@ -40,9 +40,7 @@ class ProjectsController < ApplicationController
     project.assign_attributes(    
                               title: params[:title],
                               face: params[:face],
-                              face_color: params[:face_color],
                               eyes: params[:eyes],
-                              nose: params[:nose],
                               mouth: params[:mouth]
                               )
 

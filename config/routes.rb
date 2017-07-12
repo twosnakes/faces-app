@@ -33,6 +33,16 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  namespace :api do
+    namespace :v1 do
+      post '/users/:user_id/projects' => 'projects#create'
+      get '/users/:user_id/projects/:id' => 'projects#show'
+      get '/users/:user_id/projects/:id/edit' => 'projects#edit'
+      patch '/users/:user_id/projects/:id' => 'projects#update'
+      delete '/users/:user_id/projects/:id' => 'projects#destroy'
+    end
+  end
+
 
 
 
