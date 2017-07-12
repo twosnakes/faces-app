@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615015055) do
+ActiveRecord::Schema.define(version: 20170712000321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,7 @@ ActiveRecord::Schema.define(version: 20170615015055) do
     t.boolean "completed"
     t.boolean "current"
     t.string "face"
-    t.string "face_color"
     t.string "eyes"
-    t.string "nose"
     t.string "mouth"
     t.string "title"
     t.datetime "created_at", null: false

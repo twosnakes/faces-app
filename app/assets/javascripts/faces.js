@@ -20,7 +20,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       changeEye: function(eye) {
         this.currentEye = eye;
       },
-     
+      
+
+      saveFace: function() {
+        var params = {
+                      face: this.currentFace,
+                      mouth: this.currentMouth,
+                      eye: this.currentEye
+
+                      }
+
+                      
+      }
     }
     
   });
