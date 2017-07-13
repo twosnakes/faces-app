@@ -35,11 +35,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      post '/users/:user_id/projects' => 'projects#create'
-      get '/users/:user_id/projects/:id' => 'projects#show'
-      get '/users/:user_id/projects/:id/edit' => 'projects#edit'
-      patch '/users/:user_id/projects/:id' => 'projects#update'
-      delete '/users/:user_id/projects/:id' => 'projects#destroy'
+      get '/projects/:id' => 'faces#show'
+      patch '/projects/:id' => 'faces#update'
+      delete '/projects/:id' => 'faces#destroy'
     end
   end
 

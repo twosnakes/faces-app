@@ -3,9 +3,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el: '#app',
     data: {
       message: 'Hello Vue!',
+      
+
+
       currentMouth: '',
       currentFace: '',
-      currentEye: ''
+      currentEye: '',
+      faceId: 0
 
     },
     methods: {
@@ -26,24 +30,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var params = {
                       face: this.currentFace,
                       mouth: this.currentMouth,
-                      eye: this.currentEye
+                      eyes: this.currentEye
 
                       }
 
+          var idOfFace = this.faceId
+
           $.ajax({
-            url: '/api/v1/applications/' + applicationId.innerHTML, 
+            url: '/api/v1/projects/' + idOfFace + '.json', 
             type: 'PATCH', 
             dataType: 'json', 
             data: params, 
             success: function(data) {
-                                    console.log(data);
+                                    console.log("FACE SAVED!");
                                     },
             error: function(e) {
-                                console.log("hey girl");
+                                console.log("ERROR");
                                 }
           });            
       }
+    },
+
+    mounted: function(){
+      var face = $(location).attr('href').split('/').splice(5,2);
+      this.faceId = face[1];
+
+      
+      $.get('/api/v1/projects/' + this.faceId + '.json', function(data){
+        console.log(data);
+        this.currentMouth = data["mouth"];
+        this.currentEye = data["eyes"];
+        this.currentFace = data["face"];
+      }.bind(this));
+
     }
     
   });
 });
+
