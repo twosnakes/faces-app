@@ -1,8 +1,8 @@
  <h1>SVG CANVAS</h1> 
  <h1>Hi <%= current_user.first_name%> <%= current_user.last_name %>!</h1>
 
-                      
- 
+<button onclick="exportPNG();">Export</button>                      
+
 <%= form_tag "/users/#{current_user.id}/projects/#{@project.id}", method: :patch do %>
 
 
@@ -26,7 +26,13 @@
 
 <!-- VUE START -->
 <div id="app">
-  <svg id="place" height="500" width="500">
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="500">
+
+
+  
+
+
+
   <g id="face-group">
     <g v-if="currentFace === 'violet-circle'">
       <ellipse cx="239.447" cy="267.467" rx="190.684" ry="188.865" style="stroke: rgb(14, 14, 14); stroke-width: 11; fill: rgb(233, 132, 255);"/>
@@ -367,6 +373,7 @@
   
 
   </svg>
+   <canvas id="canvas"></canvas>
   <h2>Faces</h2>
   <ul id="face-buttons">
     <li v-on:click="changeFace('violet-circle')">Violet Circle</li>
@@ -408,5 +415,72 @@
 <!-- VUE END -->
 <% end %>
 
+<script type="text/javascript">
+    var exportPNG = function() {
+ 
+    /*
+    Based off  gustavohenke's svg2png.js
+    gist.github.com/gustavohenke/9073132
+    */
+ 
+    var svg = document.querySelector( "svg" );
+    var svgData = new XMLSerializer().serializeToString( svg );
+ 
+    var canvas = document.createElement( "canvas" );
+    var ctx = canvas.getContext( "2d" );
+ 
+    var dataUri = '';
+    try {
+        dataUri = 'data:image/svg+xml;base64,' + btoa(svgData);
+    } catch (ex) {
+ 
+        // For browsers that don't have a btoa() method, send the text off to a webservice for encoding
+        /* Uncomment if needed (requires jQuery)
+        $.ajax({
+            url: "http://www.mysite.com/webservice/encodeString",
+            data: { svg: svgData },
+            type: "POST",
+            async: false,
+            success: function(encodedSVG) {
+                dataUri = 'data:image/svg+xml;base64,' + encodedSVG;
+            }
+        })
+        */
+ 
+    }
+ 
+    var img = document.createElement( "img" );
+ 
+    img.onload = function() {
+        ctx.drawImage( img, 0, 0, 150, 150);
+ 
+        try {
+ 
+            // Try to initiate a download of the image
+            var a = document.createElement("a");
+            a.download = "Saved_Face.png";
+            a.href = canvas.toDataURL("image/png");
+            document.querySelector("body").appendChild(a);
+            a.click();
+            document.querySelector("body").removeChild(a);
+ 
+        } catch (ex) {
+ 
+            // If downloading not possible (as in IE due to canvas.toDataURL() security issue)
+            // then display image for saving via right-click
+ 
+            var imgPreview = document.createElement("div");
+            imgPreview.appendChild(img);
+            document.querySelector("body").appendChild(imgPreview);
+ 
+        }
+    };
+ 
+    img.src = dataUri;
+ 
+}
+</script>
+
+</body>
 
 
