@@ -1,29 +1,19 @@
- <h1>SVG CANVAS</h1> 
- <h1>Hi <%= current_user.first_name%> <%= current_user.last_name %>!</h1>
+ 
+ <div class="well">
+   <h1>SVG CANVAS</h1> 
+   <h1>Hi <%= current_user.first_name%> <%= current_user.last_name %>!</h1>                   
 
-<button onclick="exportPNG();">Export</button>                      
+    <%= form_tag "/users/#{current_user.id}/projects/#{@project.id}", method: :patch do %>
 
-<%= form_tag "/users/#{current_user.id}/projects/#{@project.id}", method: :patch do %>
+   
 
+    <!-- if project.completed != true   --> 
 
+    <%= link_to "New Project", "/users/#{@user.id}/projects", method: :post %> 
+    <%= link_to "Delete Project", "/users/#{@user.id}/projects/#{@project.id}", method: :delete %> 
+   
 
-
-
-        
-            <%= link_to "Saved Projects", "/users/#{ current_user.id }/projects", method: :get %> 
-
-               
-
-                           
-
-                      <!-- if project.completed != true   --> 
-
-
-
-                                 <%= link_to "New Project", "/users/#{@user.id}/projects", method: :post %> 
-                                 <%= link_to "Delete Project", "/users/#{@user.id}/projects/#{@project.id}", method: :delete %> 
-                                 <%= link_to "Finalize/Share Project", "/users/#{@user.id}/projects", method: :post %> 
-
+ </div>
 <!-- VUE START -->
 <div id="app">
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="500">
@@ -374,43 +364,54 @@
 
   </svg>
    <canvas id="canvas"></canvas>
-  <h2>Faces</h2>
-  <ul id="face-buttons">
-    <li v-on:click="changeFace('violet-circle')">Violet Circle</li>
-    <li v-on:click="changeFace('neon-green-circle')">Bright Green Circle</li>
-    <li v-on:click="changeFace('yellow-circle')">Yellow Circle</li>
-    <li v-on:click="changeFace('ocean-blue-circle')">Ocean Blue Circle</li>
-    <li v-on:click="changeFace('light-blue-circle')">Light Blue Circle</li>
-    <li v-on:click="changeFace('red-circle')">Red Circle</li>
-    <li v-on:click="changeFace('orange-circle')">Orange Circle</li>
+  <div class="row well">
+    <div class="option-columns col-sm-3">
+      <h2>Faces</h2>
+      <ul id="face-buttons">
+        <li v-on:click="changeFace('violet-circle')">Violet Circle</li>
+        <li v-on:click="changeFace('neon-green-circle')">Bright Green Circle</li>
+        <li v-on:click="changeFace('yellow-circle')">Yellow Circle</li>
+        <li v-on:click="changeFace('ocean-blue-circle')">Ocean Blue Circle</li>
+        <li v-on:click="changeFace('light-blue-circle')">Light Blue Circle</li>
+        <li v-on:click="changeFace('red-circle')">Red Circle</li>
+        <li v-on:click="changeFace('orange-circle')">Orange Circle</li>
 
-  </ul>
-  <h2>Mouths</h2>
-  <ul id="mouth-buttons">
-    <li v-on:click="changeMouth('toothy')">Toothy</li>
-    <li v-on:click="changeMouth('tongue')">Open</li>
-    <li v-on:click="changeMouth('black-lips')">Black Lips</li>
-    <li v-on:click="changeMouth('grin')">Grin</li>
-    <li v-on:click="changeMouth('dollar-sign')">Dollar Sign</li>
-    <li v-on:click="changeMouth('red-lips')">Red Lips</li>
-    <li v-on:click="changeMouth('tongue-out')">Tongue Out</li>
-    <li v-on:click="changeMouth('pout')">Pout</li>
-  </ul>
-  <h2>Eyes</h2>
-  <ul id="eye-buttons">
-    <li v-on:click="changeEye('cartoon-eye')">Cartoon Eyes</li>
-    <li v-on:click="changeEye('star-eye')">Stars</li>
-    <li v-on:click="changeEye('square-eye')">Squares</li>
-    <li v-on:click="changeEye('thought-bubble')">Thought Bubbles</li>
-    <li v-on:click="changeEye('heart-eye')">Hearts</li>
-    <li v-on:click="changeEye('bang-eye')">Bang Bang</li>
-    <li v-on:click="changeEye('diamond-eye')">Diamonds</li>
-    <li v-on:click="changeEye('skull-bones')">Skull and Crossbones</li>
-  </ul>
+      </ul>
+    </div>
+    <div class="option-columns col-sm-3">
+      <h2>Mouths</h2>
+      <ul id="mouth-buttons">
+        <li v-on:click="changeMouth('toothy')">Toothy</li>
+        <li v-on:click="changeMouth('tongue')">Open</li>
+        <li v-on:click="changeMouth('black-lips')">Black Lips</li>
+        <li v-on:click="changeMouth('grin')">Grin</li>
+        <li v-on:click="changeMouth('dollar-sign')">Dollar Sign</li>
+        <li v-on:click="changeMouth('red-lips')">Red Lips</li>
+        <li v-on:click="changeMouth('tongue-out')">Tongue Out</li>
+        <li v-on:click="changeMouth('pout')">Pout</li>
+      </ul>
+    </div>
+    <div class="option-columns col-sm-3">
+      <h2>Eyes</h2>
+      <ul id="eye-buttons">
+        <li v-on:click="changeEye('cartoon-eye')">Cartoon Eyes</li>
+        <li v-on:click="changeEye('star-eye')">Stars</li>
+        <li v-on:click="changeEye('square-eye')">Squares</li>
+        <li v-on:click="changeEye('thought-bubble')">Thought Bubbles</li>
+        <li v-on:click="changeEye('heart-eye')">Hearts</li>
+        <li v-on:click="changeEye('bang-eye')">Bang Bang</li>
+        <li v-on:click="changeEye('diamond-eye')">Diamonds</li>
+        <li v-on:click="changeEye('skull-bones')">Skull and Crossbones</li>
+      </ul>
+    </div>
 
 
-  <li v-on:click="saveFace">Save Project</li>
- 
+    <div class="col-sm-3">
+      <li class="btn btn-primary" v-on:click="saveFace">Save Project</li>
+      <button class="btn btn-primary" onclick="exportPNG();">Export</button>   
+    </div>
+   
+  </div>
 </div>
 <!-- VUE END -->
 <% end %>

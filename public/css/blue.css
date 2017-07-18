@@ -1638,13 +1638,14 @@ blockquote {
 .sidebar-left .sidebar-nav {
   top: 0;
   width: 100%;
-  margin: 0;
-  padding: 0;
+/*  margin: 0;*/  
+  /*padding: 0;*/
   list-style: none; }
   .sidebar-left .sidebar-nav li {
     text-indent: 40px;
     line-height: 30px;
-    padding: 0 20px; }
+    padding: 0!important; 
+    }
     .sidebar-left .sidebar-nav li a {
       display: block;
       text-decoration: none;
