@@ -1,16 +1,16 @@
  
- <div class="well">
+<div id="app">
+ <div class="well" id="svg-top">
    <h1>SVG CANVAS</h1> 
    <h1>Hi <%= current_user.first_name%> <%= current_user.last_name %>!</h1>                   
     <div>
+      <%= link_to "New Project", "/users/#{@user.id}/projects", method: :post, class: "btn btn-warning" %> 
       <li class="btn btn-info" v-on:click="saveFace">Save Project</li>
       <button class="btn btn-success" onclick="exportPNG();">Export</button>   
-      <%= link_to "New Project", "/users/#{@user.id}/projects", method: :post, class: "btn btn-warning" %> 
       <%= link_to "Delete Project", "/users/#{@user.id}/projects/#{@project.id}", method: :delete, class: "btn btn-danger" %> 
     </div>
   </div>
 <!-- VUE START -->
-<div id="app">
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="500">
 
 
@@ -359,7 +359,7 @@
 
   </svg>
    <canvas id="canvas"></canvas>
-  <div class="row well">
+  <div class="row well" id="svg-bottom">
     <div class="option-columns col-sm-3">
       <h2>Faces</h2>
       <ul id="face-buttons">
