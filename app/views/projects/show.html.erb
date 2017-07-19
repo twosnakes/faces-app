@@ -2,18 +2,13 @@
  <div class="well">
    <h1>SVG CANVAS</h1> 
    <h1>Hi <%= current_user.first_name%> <%= current_user.last_name %>!</h1>                   
-
-    <%= form_tag "/users/#{current_user.id}/projects/#{@project.id}", method: :patch do %>
-
-   
-
-    <!-- if project.completed != true   --> 
-
-    <%= link_to "New Project", "/users/#{@user.id}/projects", method: :post %> 
-    <%= link_to "Delete Project", "/users/#{@user.id}/projects/#{@project.id}", method: :delete %> 
-   
-
- </div>
+    <div>
+      <li class="btn btn-info" v-on:click="saveFace">Save Project</li>
+      <button class="btn btn-success" onclick="exportPNG();">Export</button>   
+      <%= link_to "New Project", "/users/#{@user.id}/projects", method: :post, class: "btn btn-warning" %> 
+      <%= link_to "Delete Project", "/users/#{@user.id}/projects/#{@project.id}", method: :delete, class: "btn btn-danger" %> 
+    </div>
+  </div>
 <!-- VUE START -->
 <div id="app">
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="500">
@@ -407,14 +402,15 @@
 
 
     <div class="col-sm-3">
-      <li class="btn btn-primary" v-on:click="saveFace">Save Project</li>
-      <button class="btn btn-primary" onclick="exportPNG();">Export</button>   
+
+
+
     </div>
    
   </div>
 </div>
 <!-- VUE END -->
-<% end %>
+
 
 <script type="text/javascript">
     var exportPNG = function() {
